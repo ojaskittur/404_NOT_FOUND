@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
-  <h2 class="card-title">QUESTION PAPER UPLOAD REPOSITORY</h2>
-
-   
-    <a href="https://github.com/ojaskittur/404_NOT_FOUND"></a>
-
+  <h2>Upload Question paper</h2>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Upload paper</button>
+  </form>
 {% endblock %}
