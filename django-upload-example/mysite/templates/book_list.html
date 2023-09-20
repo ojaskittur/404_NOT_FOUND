@@ -2,24 +2,19 @@
 
 {% block content %}
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <h2>QUESTION PAPERS</h2>
-      </div>
-      <div class="col-md-6 text-right">
-        <a href="{% url 'upload_book' %}" class="btn btn-primary">Upload Question Paper</a>
-      </div>
-    </div>
-  </div>
+  {% block content_header %}
+    <h2>QUESTION PAPERS</h2>
+    <p>
+      <a href="{% url 'upload_book' %}" class="btn btn-primary">Upload Question Paper</a>
+    </p>
+  {% endblock %}
 
-  <table class="table">
+  <table class="table mb-0">
     <thead>
       <tr>
         <th>SUBJECT</th>
         <th>SLOT</th>
         <th>TEACHER NAME</th>
-        <th>Cover</th>
         <th>Download</th>
         <th>Delete</th>
       </tr>
@@ -27,15 +22,12 @@
     <tbody>
       {% for book in books %}
         <tr>
-          <td>{{ book.subject }}</td>
-          <td>{{ book.slot }}</td>
-          <td>{{ book.teacher }}</td>
+          <td>{{ book.title }}</td>
           <td>
-            {% if book.cover %}
-              <img src="{{ book.cover.url }}" alt="{{ book.title }}" style="max-width: 100px; max-height: 100px;">
-            {% else %}
-              <span class="text-muted">No cover</span>
-            {% endif %}
+              C2+TC2
+          </td>
+          <td>
+              {{ book.author }}
           </td>
           <td>
             <a href="{{ book.pdf.url }}" class="btn btn-primary btn-sm" target="_blank">
@@ -52,6 +44,12 @@
       {% endfor %}
     </tbody>
   </table>
-</div>
-
 {% endblock %}
+
+
+
+
+
+
+
+
